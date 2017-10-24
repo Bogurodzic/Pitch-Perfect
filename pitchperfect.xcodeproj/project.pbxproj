@@ -14,6 +14,7 @@
 		9FC9853F1F9E4289009FABAD /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9FC9853D1F9E4289009FABAD /* LaunchScreen.storyboard */; };
 		9FC9854A1F9E4289009FABAD /* pitchperfectTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FC985491F9E4289009FABAD /* pitchperfectTests.swift */; };
 		9FC985551F9E4289009FABAD /* pitchperfectUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FC985541F9E4289009FABAD /* pitchperfectUITests.swift */; };
+		9FC985631F9F9F1F009FABAD /* PlayAudioViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FC985621F9F9F1F009FABAD /* PlayAudioViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -47,6 +48,7 @@
 		9FC985501F9E4289009FABAD /* pitchperfectUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = pitchperfectUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		9FC985541F9E4289009FABAD /* pitchperfectUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = pitchperfectUITests.swift; sourceTree = "<group>"; };
 		9FC985561F9E4289009FABAD /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		9FC985621F9F9F1F009FABAD /* PlayAudioViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayAudioViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -103,6 +105,7 @@
 				9FC9853B1F9E4289009FABAD /* Assets.xcassets */,
 				9FC9853D1F9E4289009FABAD /* LaunchScreen.storyboard */,
 				9FC985401F9E4289009FABAD /* Info.plist */,
+				9FC985621F9F9F1F009FABAD /* PlayAudioViewController.swift */,
 			);
 			path = pitchperfect;
 			sourceTree = "<group>";
@@ -261,6 +264,7 @@
 			files = (
 				9FC985371F9E4289009FABAD /* RecordAudioViewController.swift in Sources */,
 				9FC985351F9E4289009FABAD /* AppDelegate.swift in Sources */,
+				9FC985631F9F9F1F009FABAD /* PlayAudioViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
