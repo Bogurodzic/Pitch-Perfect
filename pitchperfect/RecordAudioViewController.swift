@@ -9,7 +9,7 @@
 import UIKit
 import AVFoundation
 
-class RecordAudioViewController: UIViewController {
+class RecordAudioViewController: UIViewController, AVAudioRecorderDelegate {
     
     var audioRecorder: AVAudioRecorder!
 
@@ -41,13 +41,14 @@ class RecordAudioViewController: UIViewController {
         let dirPath = NSSearchPathForDirectoriesInDomains(.documentDirectory, .userDomainMask, true)[0] as String
         let recordingName = "recordedVoice.wav"
         let pathArray = [dirPath, recordingName]
-        let fileName = URL(string: pathArray.joined(separator: "/"))
-        print(fileName)
+        let pathName = URL(string: pathArray.joined(separator: "/"))
+        print(pathName)
         
         let session = AVAudioSession.sharedInstance()
         try! session.setCategory(AVAudioSessionCategoryPlayAndRecord, with: .defaultToSpeaker)
         
-        try! audioRecorder = AVAudioRecorder(url: fileName!, settings: [:])
+        try! audioRecorder = AVAudioRecorder(url: pathName!, settings: [:])
+        audioRecorder.delegate = self;
         audioRecorder.isMeteringEnabled = true;
         audioRecorder.prepareToRecord();
         audioRecorder.record();
@@ -61,6 +62,14 @@ class RecordAudioViewController: UIViewController {
         audioRecorder.stop();
         let audioSession = AVAudioSession.sharedInstance();
         try! audioSession.setActive(false);
+    }
+    
+    func audioRecorderDidFinishRecording(_ recorder: AVAudioRecorder, successfully flag: Bool) {
+        if flag {
+            performSegue(withIdentifier: "stopRecording", sender: audioRecorder.url)
+        } else {
+            print("Something went wrong")
+        }
     }
     
     
