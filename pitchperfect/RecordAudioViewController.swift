@@ -29,14 +29,11 @@ class RecordAudioViewController: UIViewController, AVAudioRecorderDelegate {
     }
 
     override func viewDidAppear(_ animated: Bool) {
-        //
     }
 
 
     @IBAction func recordAudio(_ sender: Any) {
-        recordingLabel.text = "Recording in progres..."
-        stopRecordingButton.isEnabled = true;
-        recordButton.isEnabled = false;
+        toggleRecording(toggle: true)
         
         let dirPath = NSSearchPathForDirectoriesInDomains(.documentDirectory, .userDomainMask, true)[0] as String
         let recordingName = "recordedVoice.wav"
@@ -48,18 +45,14 @@ class RecordAudioViewController: UIViewController, AVAudioRecorderDelegate {
         try! session.setCategory(AVAudioSessionCategoryPlayAndRecord, with: .defaultToSpeaker)
         
         try! audioRecorder = AVAudioRecorder(url: pathName!, settings: [:])
-        audioRecorder.delegate = self;
-        audioRecorder.isMeteringEnabled = true;
-        audioRecorder.prepareToRecord();
-        audioRecorder.record();
+
+        startRecording()
     }
     
     
     @IBAction func stopRecording(_ sender: Any) {
-        recordingLabel.text = "Tap to record"
-        stopRecordingButton.isEnabled = false;
-        recordButton.isEnabled = true;
-        audioRecorder.stop();
+        toggleRecording(toggle: false)
+
         let audioSession = AVAudioSession.sharedInstance();
         try! audioSession.setActive(false);
     }
@@ -78,6 +71,26 @@ class RecordAudioViewController: UIViewController, AVAudioRecorderDelegate {
             let recordedAudioURL = sender as! URL!
             playAudioVC.recordedAudioURL = recordedAudioURL
         }
+    }
+    
+    func toggleRecording(toggle: Bool){
+        if toggle{
+            recordingLabel.text = "Recording in progres..."
+            stopRecordingButton.isEnabled = true;
+            recordButton.isEnabled = false;
+        } else {
+            recordingLabel.text = "Tap to record"
+            stopRecordingButton.isEnabled = false;
+            recordButton.isEnabled = true;
+            audioRecorder.stop();
+        }
+    }
+    
+    func startRecording(){
+        audioRecorder.delegate = self;
+        audioRecorder.isMeteringEnabled = true;
+        audioRecorder.prepareToRecord();
+        audioRecorder.record();
     }
     
     
